@@ -1,0 +1,23 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyStateMachine
+{
+    public EnemyState currentState { get; private set; }
+
+    public void Initialized(EnemyState _startState)
+    {
+        currentState = _startState;
+        currentState.Enter();
+    }
+
+    public void ChangeState(EnemyState _newState)
+    {
+        if (currentState == _newState)
+            return;
+        currentState?.Exit();
+        currentState = _newState;
+        currentState.Enter();
+    }
+}

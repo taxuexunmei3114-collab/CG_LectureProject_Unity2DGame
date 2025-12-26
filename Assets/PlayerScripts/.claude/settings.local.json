@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir:*)",
+      "Read(//e/PersonalFiles/Documents/main/unity/My project/Assets/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
