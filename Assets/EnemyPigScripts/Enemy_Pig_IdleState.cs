@@ -32,14 +32,26 @@ public class Enemy_Pig_IdleState : EnemyState
             {
                 // 距离足够近，准备攻击
                 // 检查是否为炸弹猪并判断是否应该投掷炸弹
-                if (enemy is Enemy_Pig_Bomb bombEnemy && bombEnemy.ShouldThrowBomb())
+                if (enemy is Enemy_Pig_Bomb bombEnemy )
                 {
-                    stateMachine.ChangeState(bombEnemy.throwState);
+                    if(bombEnemy.IsWaitingToThrow())
+                    {
+                        return;
+                    }
+
+                    if(bombEnemy.ShouldThrowBomb())
+                    {
+                        stateMachine.ChangeState(bombEnemy.throwState);
+                        return;
+                    }
+                    
+                }
+                else
+                {
+                    stateMachine.ChangeState(enemy.attackState);
                     return;
                 }
-
-                stateMachine.ChangeState(enemy.attackState);
-                return;
+                    
             }
 
             // 获取玩家相对于敌人的方向

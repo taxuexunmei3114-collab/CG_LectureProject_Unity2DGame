@@ -47,6 +47,7 @@ public class Enemy_Pig : MonoBehaviour
     [Header("Collison info")]
     [SerializeField] protected Transform CliffCheck;
     [SerializeField] protected float cliffDis = 0.35f;
+    [SerializeField] public bool isCliffCheckEnable=true;
     [Space]
     [SerializeField] protected float wallDis = 0.63f;
     [SerializeField] protected Transform WallCheck;

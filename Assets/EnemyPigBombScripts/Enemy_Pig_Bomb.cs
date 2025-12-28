@@ -31,11 +31,16 @@ public class Enemy_Pig_Bomb : Enemy_Pig
         patrolState = new Enemy_Pig_PatrolState(stateMachine, this, "Pig_bomb_run", EnemyAnimationType.Loop);
         chaseState = new Enemy_Pig_ChaseState(stateMachine, this, "Pig_bomb_run", EnemyAnimationType.Loop);
         attackState = new Enemy_Pig_AttackState(stateMachine, this, "Pig_attack", EnemyAnimationType.OneShot);
-        hittedState = new Enemy_Pig_HittedState(stateMachine, this, "Pig_bomb_hitted", EnemyAnimationType.OneShot);
+        hittedState = new Enemy_Pig_HittedState(stateMachine, this, "Pig_bomb_hit", EnemyAnimationType.OneShot);
         deadState = new Enemy_Pig_DeadState(stateMachine, this, "Pig_bomb_dead", EnemyAnimationType.OneShot);
         // 初始化炸弹猪特有的状态
         throwState = new Enemy_Pig_Bomb_ThrowState(stateMachine, this, "Pig_bomb_throw", EnemyAnimationType.OneShot);
         pickingState = new Enemy_Pig_Bomb_PickingState(stateMachine, this, "Pig_bomb_picking", EnemyAnimationType.OneShot);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
     }
 
     // 炸弹猪特有的方法
@@ -70,11 +75,36 @@ public class Enemy_Pig_Bomb : Enemy_Pig
         return _isPlayerDetected;
     }
 
+    public bool IsWaitingToThrow()
+    {
+        if (_isPlayerDetected &&
+               GetDistanceToPlayer() <= attackTriggerDistance)
+        {
+            if(Time.time - lastThrowTime >= throwCooldown)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
     // 判断是否应该投掷炸弹
     public bool ShouldThrowBomb()
     {
         return Time.time - lastThrowTime >= throwCooldown &&
                _isPlayerDetected &&
                GetDistanceToPlayer() <= attackTriggerDistance; 
+    }
+
+    public override void OnHittedAnimationEnd()
+    {
+        if (isDead) stateMachine.ChangeState(deadState);
+        else stateMachine.ChangeState(pickingState);
+
     }
 }

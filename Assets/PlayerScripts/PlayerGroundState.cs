@@ -11,6 +11,7 @@ public class PlayerGroundState : PlayerState
     public override void Enter()
     {
         base.Enter();
+        player.is2jump = false;
     }
 
     public override void Exit()

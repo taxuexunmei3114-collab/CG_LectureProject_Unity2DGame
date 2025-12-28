@@ -12,6 +12,10 @@ public class Enemy_KingPig : Enemy_Pig
     private float jump_vy = 5f;
     private float nextTeleportTime;
     private int currentTeleportIndex = 1;
+    [SerializeField] GameObject pigPrefab;
+    [SerializeField] Transform pig_point_1;
+    [SerializeField] GameObject pigBombPrefab;
+    [SerializeField] Transform pig_bomb_point_1;
 
     // 新增状态（必须）
     public Enemy_KingPig_JumpState jumpState { get; protected set; }
@@ -110,6 +114,15 @@ public class Enemy_KingPig : Enemy_Pig
         nextTeleportTime = Time.time + Random.Range(minTeleportInterval, maxTeleportInterval);
     }
 
+    public void SummonPig()
+    {
+        if (pigPrefab == null || pig_point_1 == null || pigBombPrefab == null || pig_bomb_point_1 == null)
+            return;
+        GameObject pig1 = Instantiate(pigPrefab, pig_point_1.position, Quaternion.identity);
+        //GameObject pig2 = Instantiate(pigPrefab, pig_point_2.position, Quaternion.identity);
+        GameObject pigBomb1 = Instantiate(pigBombPrefab, pig_bomb_point_1.position, Quaternion.identity);
+    }
+
     // 用于外部调用（如受伤瞬移）
     public void ForceTeleport()
     {
@@ -119,7 +132,11 @@ public class Enemy_KingPig : Enemy_Pig
     public override void OnHittedAnimationEnd()
     {
         if (isDead) stateMachine.ChangeState(deadState);
-        else TryTeleport();
+        else
+        {
+            SummonPig();
+            TryTeleport();
+        }
     }
 
     public override void OnDeadAnimationEnd()

@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
 
 
     private float health;
+    private float maxHealth;
 
     #endregion
 
@@ -73,6 +74,8 @@ public class Player : MonoBehaviour
 
     protected bool isGround;
     protected bool isWall;
+    public bool is2JumpEnable = false;
+    public bool is2jump = false;
 
     [Header("Attack")]
     [SerializeField] public bool isAttack;
@@ -121,6 +124,7 @@ public class Player : MonoBehaviour
         anim = GetComponentInChildren<Animator>();
         stateMachine.Initialized(idleState);//初始设置为idle
         health = healthControl.health;
+        maxHealth = healthControl.maxHealth;
     }
     protected void Update()
     {
@@ -180,6 +184,15 @@ public class Player : MonoBehaviour
         health -= damage_health;
         StartCoroutine(StartInvincibility());
 
+    }
+
+    public void Heal(float increase_health=1f)
+    {
+        health += increase_health;
+        if (health >= maxHealth)
+        {
+            health = maxHealth;
+        }
     }
 
     private IEnumerator StartInvincibility()
@@ -252,4 +265,10 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(time);
         OnDestroy();
     }
+
+    public void Set2JumpEnable(bool value)
+    {
+        is2JumpEnable = value;
+    }
+
 }

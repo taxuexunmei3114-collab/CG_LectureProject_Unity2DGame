@@ -26,10 +26,20 @@ public class Enemy_Pig_ChaseState : EnemyState
         }
 
         // 检查是否为炸弹猪并判断是否应该投掷炸弹
-        if (enemy is Enemy_Pig_Bomb bombEnemy && bombEnemy.ShouldThrowBomb())
+        if (enemy is Enemy_Pig_Bomb bombEnemy)
         {
-            stateMachine.ChangeState(bombEnemy.throwState);
-            return;
+            if (bombEnemy.IsWaitingToThrow())
+            {
+                stateMachine.ChangeState(bombEnemy.idleState);
+                return;
+            }
+            if (bombEnemy.ShouldThrowBomb())
+            {
+                stateMachine.ChangeState(bombEnemy.throwState);
+                return;
+            }
+
+  
         }
         else
         {

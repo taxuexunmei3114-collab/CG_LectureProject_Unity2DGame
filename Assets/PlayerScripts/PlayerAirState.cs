@@ -23,7 +23,11 @@ public class PlayerAirState : PlayerState
         base.Update();
         float airMoveSpeed = player.moveSpeed * player.fallMoveMultiplier;
         player.setVelocity(inputcontrol.xInput * airMoveSpeed, rb.velocity.y);
-
+        if(inputcontrol.IsJumpPressed() && player.is2JumpEnable && !player.is2jump)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, player.jumpForce);
+            player.is2jump = true;
+        }
         if (inputcontrol.IsAttackPressed())
         {
             stateMachine.ChangeState(player.attackState);

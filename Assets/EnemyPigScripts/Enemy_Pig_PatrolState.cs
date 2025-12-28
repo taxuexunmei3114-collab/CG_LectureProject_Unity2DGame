@@ -56,8 +56,8 @@ public class Enemy_Pig_PatrolState : EnemyState
         }
         else
         {
-            // 检测只有落地后遇到墙壁或悬崖掉头
-            if ((enemy.isCliff || enemy.isWall) && enemy.isGround)
+            // 检测只有落地后遇到墙壁或悬崖掉头(可以控制悬崖检测开关)
+            if (((enemy.isCliff && enemy.isCliffCheckEnable) || enemy.isWall) && enemy.isGround)
             {
                 enemy.Flip();
                 return;
