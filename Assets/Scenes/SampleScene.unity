@@ -1302,7 +1302,7 @@ GameObject:
   - component: {fileID: 348026461}
   - component: {fileID: 348026463}
   - component: {fileID: 348026462}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: doorOutPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -1336,7 +1336,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
