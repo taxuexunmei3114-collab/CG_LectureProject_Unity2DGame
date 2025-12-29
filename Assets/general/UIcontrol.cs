@@ -10,6 +10,7 @@ public class UIcontrolr : MonoBehaviour
     [Header("UI Buttons")]
     [SerializeField] private Button restartButton;
     [SerializeField] private Button godModeButton;
+    [SerializeField] private Button mainMenuButton;
 
     [Header("UI Text & Image")]
     [SerializeField] private Text godModeText;
@@ -20,9 +21,14 @@ public class UIcontrolr : MonoBehaviour
 
     private void Start()
     {
-        // ³õÊ¼Òş²ØÓÎÏ·½áÊøÏà¹ØUI
+        // åˆå§‹éšè—æ¸¸æˆç»“æŸç›¸å…³UI
         HideGameOverUI();
-        // ÉèÖÃ°´Å¥µ¼º½ÎªNone£¬·ÀÖ¹¼üÅÌÊäÈë´¥·¢°´Å¥
+        
+        // è°ƒè¯•ä¿¡æ¯ï¼šæ£€æŸ¥æŒ‰é’®æ˜¯å¦è¢«åˆ†é…
+        Debug.Log("UIcontrol Start called");
+        Debug.Log("mainMenuButton is " + (mainMenuButton != null ? "assigned" : "NULL"));
+        
+        // è®¾ç½®æŒ‰é’®å¯¼èˆªä¸ºNoneï¼Œé˜²æ­¢é”®ç›˜è¾“å…¥è§¦å‘æŒ‰é’®
         if (restartButton != null)
         {
             Navigation nav = restartButton.navigation;
@@ -47,13 +53,54 @@ public class UIcontrolr : MonoBehaviour
             });
         }
 
+        if (mainMenuButton != null)
+        {
+            Navigation nav = mainMenuButton.navigation;
+            nav.mode = Navigation.Mode.None;
+            mainMenuButton.navigation = nav;
+
+            mainMenuButton.onClick.AddListener(() => {
+                Debug.Log("Main Menu button clicked - attempting to load MainMenu scene");
+                GoToMainMenu();
+            });
+            
+            // è°ƒè¯•ï¼šæ£€æŸ¥æŒ‰é’®çŠ¶æ€
+            Debug.Log("mainMenuButton gameObject active: " + mainMenuButton.gameObject.activeSelf);
+            Debug.Log("mainMenuButton interactable: " + mainMenuButton.interactable);
+        }
+        else
+        {
+            Debug.LogError("mainMenuButton is not assigned in the inspector!");
+        }
+
         UpdateGodModeText();
     }
 
     private void RestartGame()
     {
-        // ÖØĞÂ¼ÓÔØµ±Ç°³¡¾°
+        // é‡æ–°åŠ è½½å½“å‰åœºæ™¯
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        HideGameOverUI();
+    }
+
+    private void GoToMainMenu()
+    {
+        Debug.Log("GoToMainMenu called, attempting to load MainMenu scene");
+        
+        // æ£€æŸ¥åœºæ™¯æ˜¯å¦å­˜åœ¨
+        int sceneIndex = SceneUtility.GetBuildIndexByScenePath("MainMenu");
+        if (sceneIndex < 0)
+        {
+            Debug.LogError("MainMenu scene not found in build settings! Available scenes:");
+            for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+            {
+                Debug.Log("Scene " + i + ": " + SceneUtility.GetScenePathByBuildIndex(i));
+            }
+            return;
+        }
+        
+        // åŠ è½½ä¸»èœå•åœºæ™¯
+        SceneManager.LoadScene("MainMenu");
         HideGameOverUI();
     }
 
@@ -61,7 +108,7 @@ public class UIcontrolr : MonoBehaviour
     {
         isGodMode = !isGodMode;
 
-        // ÉèÖÃÍæ¼ÒÎŞµĞÄ£Ê½
+        // è®¾ç½®ç©å®¶æ— æ•Œæ¨¡å¼
         if (Player.Instance != null)
         {
             Player.Instance.setGodMode(isGodMode);
@@ -74,21 +121,25 @@ public class UIcontrolr : MonoBehaviour
     {
         if (godModeText != null)
         {
-            godModeText.text = isGodMode ? "ÎŞµĞ: ¿ªÆô(×¢Òâ£ºÕ¨µ¯ÖíÊÇÎŞµĞµÄ)" : "ÎŞµĞ: ¹Ø±Õ(×¢Òâ£ºÕ¨µ¯ÖíÊÇÎŞµĞµÄ)";
+            godModeText.text = isGodMode ? "æ— æ•Œ: å¼€å¯(wasdç§»åŠ¨ Jæ”»å‡» ç©ºæ ¼è·³è·ƒ é•¿æŒ‰sè½ä¸‹)" : "æ— æ•Œ: å…³é—­(wasdç§»åŠ¨ Jæ”»å‡» ç©ºæ ¼è·³è·ƒ é•¿æŒ‰sè½ä¸‹)";
         }
     }
 
-    // ÏÔÊ¾ÓÎÏ·½áÊøUI
+    // æ˜¾ç¤ºæ¸¸æˆç»“æŸUI
     public void GameOver()
     {
         if (gameOverText != null)
         { 
             gameOverText.gameObject.SetActive(true);
-            gameOverText.text = "ÓÎÏ·Ê§°Ü\n(ÇëÖØĞÂ¿ªÊ¼)";
+            gameOverText.text = "æ¸¸æˆå¤±è´¥";
         }
 
         if (gameOverImage != null)
             gameOverImage.gameObject.SetActive(true);
+
+        // æ˜¾ç¤ºä¸»èœå•æŒ‰é’®
+        if (mainMenuButton != null)
+            mainMenuButton.gameObject.SetActive(true);
     }
 
     public void GameVictory()
@@ -96,13 +147,17 @@ public class UIcontrolr : MonoBehaviour
         if (gameOverText != null)
         {
             gameOverText.gameObject.SetActive(true);
-            gameOverText.text = "ÓÎÏ·Í¨¹Ø\n(ÇëÖØĞÂ¿ªÊ¼)";
+            gameOverText.text = "æ¸¸æˆé€šå…³";
         }
         if (gameOverImage != null)
             gameOverImage.gameObject.SetActive(true);
+
+        // æ˜¾ç¤ºä¸»èœå•æŒ‰é’®
+        if (mainMenuButton != null)
+            mainMenuButton.gameObject.SetActive(true);
     }
 
-    // Òş²ØÓÎÏ·½áÊøUI
+    // éšè—æ¸¸æˆç»“æŸUI
     private void HideGameOverUI()
     {
         if (gameOverText != null)
