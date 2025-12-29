@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9055927052290632225}
   - component: {fileID: 5082376497756806757}
   - component: {fileID: 7299956314559998333}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Big Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
