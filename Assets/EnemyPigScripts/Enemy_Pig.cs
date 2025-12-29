@@ -26,6 +26,7 @@ public class Enemy_Pig : MonoBehaviour
     public Animator anim;
     public Rigidbody2D rb;
     public AnimationController animationcontroller; // 添加动画控制器引用
+    public GameObject DiamondPrefab;
 
     // 在Awake方法之前的变量声明区域添加
     public Transform currentPatrolTarget;// 当前巡逻目标点
@@ -196,6 +197,7 @@ public class Enemy_Pig : MonoBehaviour
     public virtual void OnDeadAnimationEnd()
     {
         OnDestroy();
+        ChanceDrop();
     }
     protected virtual void OnDestroy()
     {
@@ -236,5 +238,15 @@ public class Enemy_Pig : MonoBehaviour
     public bool IsGrounded()
     {
         return isGround; // 你已有这个字段
+    }
+
+    //25%概率掉落恢复血量的钻石
+    public virtual void ChanceDrop()
+    {
+        if(DiamondPrefab != null && Random.Range(0f, 100f) <= 25f)
+        {
+
+            GameObject gameObject = Instantiate(DiamondPrefab, rb.position, Quaternion.identity);
+        }
     }
 }

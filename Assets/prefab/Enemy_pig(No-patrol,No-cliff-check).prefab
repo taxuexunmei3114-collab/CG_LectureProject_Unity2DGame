@@ -283,6 +283,7 @@ MonoBehaviour:
   anim: {fileID: 2188701410137157101}
   rb: {fileID: 4303202139297224771}
   animationcontroller: {fileID: 9183689512204101588}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
