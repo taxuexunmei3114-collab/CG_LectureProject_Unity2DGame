@@ -80,6 +80,7 @@ public class UIcontrolr : MonoBehaviour
     {
         // 重新加载当前场景
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //BgmControl.Instance.ChangeBGMSmooth(BgmControl.Instance.bgm1);
         HideGameOverUI();
     }
 
