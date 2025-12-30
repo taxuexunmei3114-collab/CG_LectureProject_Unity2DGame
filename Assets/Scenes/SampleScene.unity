@@ -1097,7 +1097,7 @@ MonoBehaviour:
   anim: {fileID: 315395820}
   rb: {fileID: 315395825}
   animationcontroller: {fileID: 315395821}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   anim: {fileID: 388716463}
   rb: {fileID: 388716468}
   animationcontroller: {fileID: 388716464}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 1849261923}
@@ -2593,7 +2593,7 @@ MonoBehaviour:
   anim: {fileID: 421848945}
   rb: {fileID: 421848950}
   animationcontroller: {fileID: 421848946}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -2952,7 +2952,7 @@ MonoBehaviour:
   anim: {fileID: 464157246}
   rb: {fileID: 464157251}
   animationcontroller: {fileID: 464157247}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -3083,7 +3083,7 @@ Transform:
   m_GameObject: {fileID: 467046014}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31, y: -0.7, z: 0}
+  m_LocalPosition: {x: -0.017, y: -0.645, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12770,7 +12770,7 @@ MonoBehaviour:
   anim: {fileID: 561797723}
   rb: {fileID: 561797721}
   animationcontroller: {fileID: 561797720}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -13078,7 +13078,7 @@ MonoBehaviour:
   anim: {fileID: 573497429}
   rb: {fileID: 573497427}
   animationcontroller: {fileID: 573497426}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -16502,7 +16502,7 @@ Transform:
   m_GameObject: {fileID: 872183581}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.258, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16585,29 +16585,33 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1.046829, y: 0.9301163}
+    - - {x: 1.2107675, y: 0.96427}
+      - {x: 0.899251, y: 1.0441862}
       - {x: 0.6687021, y: 1.0177816}
-      - {x: 0.45180374, y: 1.0262619}
-      - {x: 0.26143482, y: 0.9167665}
-      - {x: 0.22312164, y: 0.6186584}
-      - {x: 0.28614545, y: 0.504409}
-      - {x: 0.6256248, y: 0.16697681}
-      - {x: 0.71040124, y: -0.11658493}
-      - {x: 0.6513919, y: -0.4697259}
-      - {x: 0.47723797, y: -0.64196634}
+      - {x: 0.55426556, y: 0.9033083}
+      - {x: 0.5278342, y: 0.73916686}
+      - {x: 0.53733635, y: 0.6323198}
+      - {x: 0.6208527, y: 0.477086}
+      - {x: 0.8783623, y: 0.28309977}
+      - {x: 0.9768011, y: -0.16440025}
+      - {x: 0.93887234, y: -0.4400215}
+      - {x: 0.8358225, y: -0.6063413}
+      - {x: 0.58652997, y: -0.7512585}
       - {x: 0.21546143, y: -0.77001226}
       - {x: 0.0047201514, y: -0.78022164}
       - {x: -0.2619415, y: -0.7365427}
-      - {x: -0.8546389, y: -0.6580693}
-      - {x: -0.3485384, y: -1.0352604}
-      - {x: 0.0025216937, y: -1.1252085}
-      - {x: 0.29106778, y: -1.1622247}
-      - {x: 0.52875274, y: -1.145248}
-      - {x: 0.86064124, y: -1.0374602}
-      - {x: 1.3972752, y: -0.6829032}
-      - {x: 1.5841863, y: -0.16743201}
-      - {x: 1.536335, y: 0.26361346}
-      - {x: 1.3079767, y: 0.75558966}
+      - {x: -0.49943954, y: -0.6307463}
+      - {x: -0.22558498, y: -0.9532913}
+      - {x: 0.0025216937, y: -1.0773932}
+      - {x: 0.29789847, y: -1.1212401}
+      - {x: 0.50143, y: -1.1930635}
+      - {x: 0.84697986, y: -1.1194293}
+      - {x: 1.1692476, y: -1.0379713}
+      - {x: 1.4314287, y: -0.87416434}
+      - {x: 1.6788588, y: -0.6699376}
+      - {x: 1.864248, y: -0.2425701}
+      - {x: 1.8095655, y: 0.3045981}
+      - {x: 1.5197306, y: 0.83072823}
   m_UseDelaunayMesh: 0
 --- !u!114 &878462336
 MonoBehaviour:
@@ -16780,7 +16784,7 @@ MonoBehaviour:
   anim: {fileID: 885523359}
   rb: {fileID: 885523357}
   animationcontroller: {fileID: 885523356}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -17556,7 +17560,7 @@ MonoBehaviour:
   anim: {fileID: 978708492}
   rb: {fileID: 978708497}
   animationcontroller: {fileID: 978708493}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -18241,7 +18245,7 @@ MonoBehaviour:
   anim: {fileID: 1100747900}
   rb: {fileID: 1100747903}
   animationcontroller: {fileID: 1100747906}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 496327067}
@@ -18631,7 +18635,7 @@ MonoBehaviour:
   anim: {fileID: 1154954724}
   rb: {fileID: 1154954722}
   animationcontroller: {fileID: 1154954721}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -18962,7 +18966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1173067402}
   - component: {fileID: 1173067404}
-  - component: {fileID: 1173067403}
+  - component: {fileID: 1173067410}
   - component: {fileID: 1173067409}
   - component: {fileID: 1173067400}
   - component: {fileID: 1173067408}
@@ -19036,41 +19040,6 @@ Transform:
   - {fileID: 872183582}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1173067403
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1173067399}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5947c3d38a5f5dd428474713557213f0, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.3, y: -0.07304841}
-  m_Size: {x: 0.73640466, y: 1.0208603}
-  m_Direction: 0
 --- !u!50 &1173067404
 Rigidbody2D:
   serializedVersion: 4
@@ -19086,7 +19055,7 @@ Rigidbody2D:
   m_Mass: 0.7339349
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1.5
+  m_GravityScale: 1.4
   m_Material: {fileID: 6200000, guid: 5947c3d38a5f5dd428474713557213f0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -19209,6 +19178,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1173067410
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173067399}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 5947c3d38a5f5dd428474713557213f0, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.006250143, y: -0.07879746}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.405, y: 0.5}
+    oldSize: {x: 3.12, y: 2.32}
+    newSize: {x: 3.12, y: 2.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.68828917, y: 1.0421829}
+  m_EdgeRadius: 0
 --- !u!1 &1177884672
 GameObject:
   m_ObjectHideFlags: 0
@@ -21244,7 +21258,7 @@ MonoBehaviour:
   anim: {fileID: 1281829377}
   rb: {fileID: 1281829382}
   animationcontroller: {fileID: 1281829378}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -21812,7 +21826,7 @@ MonoBehaviour:
   anim: {fileID: 1399620005}
   rb: {fileID: 1399620003}
   animationcontroller: {fileID: 1399620002}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -22830,7 +22844,7 @@ MonoBehaviour:
   anim: {fileID: 1557135161}
   rb: {fileID: 1557135166}
   animationcontroller: {fileID: 1557135162}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -23511,7 +23525,7 @@ MonoBehaviour:
   anim: {fileID: 1616214182}
   rb: {fileID: 1616214180}
   animationcontroller: {fileID: 1616214179}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -24052,7 +24066,7 @@ MonoBehaviour:
   anim: {fileID: 1674590855}
   rb: {fileID: 1674590850}
   animationcontroller: {fileID: 1674590857}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 1294541515}
@@ -24252,7 +24266,7 @@ MonoBehaviour:
   anim: {fileID: 1749630721}
   rb: {fileID: 1749630719}
   animationcontroller: {fileID: 1749630718}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -25037,7 +25051,7 @@ MonoBehaviour:
   anim: {fileID: 1860755552}
   rb: {fileID: 1860755557}
   animationcontroller: {fileID: 1860755553}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
@@ -25299,7 +25313,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.003467679, y: -0.049282253}
+  m_Offset: {x: 0.3668518, y: -0.06339565}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -25310,7 +25324,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8589523, y: 0.9014355}
+  m_Size: {x: 0.8027668, y: 0.8732087}
   m_EdgeRadius: 0
 --- !u!114 &1870373680
 MonoBehaviour:
@@ -25827,7 +25841,7 @@ MonoBehaviour:
   anim: {fileID: 2039567387}
   rb: {fileID: 2039567392}
   animationcontroller: {fileID: 2039567388}
-  DiamondPrefab: {fileID: 0}
+  DiamondPrefab: {fileID: 5841347056836364851, guid: fac86152dac2a9647ac048b739d08000, type: 3}
   currentPatrolTarget: {fileID: 0}
   hasPatrolRange: 0
   patrolPointA: {fileID: 0}
