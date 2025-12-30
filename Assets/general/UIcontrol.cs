@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class UIcontrolr : MonoBehaviour
+public class UIcontrol : MonoBehaviour
 {
+    public static UIcontrol instance;
     [Header("UI Buttons")]
     [SerializeField] private Button restartButton;
     [SerializeField] private Button godModeButton;
@@ -16,8 +17,23 @@ public class UIcontrolr : MonoBehaviour
     [SerializeField] private Text godModeText;
     [SerializeField] private Text gameOverText;
     [SerializeField] private Image gameOverImage;
+    [SerializeField] private Text DoubleJumpText;
+    [SerializeField] private Image DoubleJumpImage;
 
     private bool isGodMode = false;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     private void Start()
     {
@@ -158,6 +174,29 @@ public class UIcontrolr : MonoBehaviour
             mainMenuButton.gameObject.SetActive(true);
     }
 
+    public void GainDoubleJumpAbility()
+    {
+        if (DoubleJumpText != null)
+        {
+            DoubleJumpText.gameObject.SetActive(true);
+            DoubleJumpText.text = "获得二段跳能力";
+        }
+        if (DoubleJumpImage != null)
+            DoubleJumpImage.gameObject.SetActive(true);
+
+        StartCoroutine(HideDoubleJumpUIAfterDelay(1.5f));
+
+
+    }
+
+    private IEnumerator HideDoubleJumpUIAfterDelay(float delayTime)
+    {
+        // 等待指定秒数
+        yield return new WaitForSeconds(delayTime);
+        // 执行隐藏逻辑
+        HideDoubleJumpUi();
+    }
+
     // 隐藏游戏结束UI
     private void HideGameOverUI()
     {
@@ -166,6 +205,15 @@ public class UIcontrolr : MonoBehaviour
 
         if (gameOverImage != null)
             gameOverImage.gameObject.SetActive(false);
+    }
+
+    private void HideDoubleJumpUi()
+    {
+        if (DoubleJumpText != null)
+            DoubleJumpText.gameObject.SetActive(false);
+
+        if (DoubleJumpImage != null)
+            DoubleJumpImage.gameObject.SetActive(false);
     }
 
 }

@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D rb;
     public AnimationController animationcontroller;
     public PlayerInputHandler playerInputHandler;
-    public UIcontrolr ui;
+    public UIcontrol ui;
     #endregion
 
     #region State

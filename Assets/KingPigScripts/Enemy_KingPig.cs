@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_KingPig : Enemy_Pig
 {
-    public UIcontrolr ui;
+    public UIcontrol ui;
     [Header("King Pig - Teleport via Jump")]
     public Transform[] teleportPoints;
     private float minTeleportInterval = 8f;

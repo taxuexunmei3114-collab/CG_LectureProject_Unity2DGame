@@ -10,6 +10,7 @@ public class Set2Jump : MonoBehaviour
         if (e != null)
         {
             e.Set2JumpEnable(true);
+            UIcontrol.instance.GainDoubleJumpAbility();
         }
     }
 }
