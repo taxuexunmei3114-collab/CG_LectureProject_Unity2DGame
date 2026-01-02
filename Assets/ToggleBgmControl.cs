@@ -10,7 +10,7 @@ public class ToggleBgmControl : MonoBehaviour
 
     private void Awake()
     {
-        // ºËĞÄ£º¿ç³¡¾°²»Ïú»Ù + µ¥Àı·ÀÖØ¸´BGMÖØµş²¥·Å
+        // æ ¸å¿ƒï¼šè·¨åœºæ™¯ä¸é”€æ¯ + å•ä¾‹é˜²é‡å¤BGMé‡å æ’­æ”¾
         if (Instance == null)
         {
             Instance = this;
@@ -36,27 +36,28 @@ public class ToggleBgmControl : MonoBehaviour
         if (isPlayerInBossRoom && !isEnterBossRoom)
         {
             isEnterBossRoom = true;
-            BgmControl.Instance.ChangeBGMSmooth(BgmControl.Instance.bgm2);
+            BgmControl.Instance.PlayBossBGM();
         }
 
         
         if (!isPlayerInBossRoom && isEnterBossRoom)
         {
             isEnterBossRoom = false;
-            BgmControl.Instance.ChangeBGMSmooth(BgmControl.Instance.bgm1);
+            // ç¦»å¼€Bossæˆ¿é—´æ—¶ï¼Œåˆ‡æ¢å›å…³å¡éŸ³ä¹
+            BgmControl.Instance.PlayLevelBGM();
         }
     }
 
     //private void OnTriggerEnter2D(Collider2D other)
     //{
 
-    //    // ÊÇ·ñµÚÒ»´Î½øÈë
+    //    // æ˜¯å¦ç¬¬ä¸€æ¬¡è¿›å…¥
     //    if (!isEnterBossRoom)
     //    {
-    //        // 2. ±ê¼Ç£ºÒÑ¾­½øÈëBoss·¿£¬²»»áÔÙ´¥·¢
+    //        // 2. æ ‡è®°ï¼šå·²ç»è¿›å…¥Bossæˆ¿ï¼Œä¸ä¼šå†è§¦å‘
     //        isEnterBossRoom = true;
 
-    //        // 3. ²¥·ÅBossÕ½BGM2
+    //        // 3. æ’­æ”¾Bossæˆ˜BGM2
     //        BgmControl.Instance.ChangeBGMSmooth(BgmControl.Instance.bgm2);
 
             

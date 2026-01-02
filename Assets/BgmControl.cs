@@ -3,19 +3,23 @@ using System.Collections;
 
 public class BgmControl : MonoBehaviour
 {
-    // È«¾Öµ¥Àý£ºÆäËû½Å±¾¿ÉÒÔÖ±½Ó  BgmControl.Instance.µ÷ÓÃËùÓÐ·½·¨
+    // å…¨å±€å•ä¾‹ï¼šå…¶ä»–è„šæœ¬å¯ä»¥ç›´æŽ¥  BgmControl.Instance.è°ƒç”¨æ‰€æœ‰æ–¹æ³•
     public static BgmControl Instance;
-    // ²¥·ÅBGMµÄÒôÆµÔ´×é¼þ£¨ÍÏ×§¸³Öµ¼´¿É£©
+    // æ’­æ”¾BGMçš„éŸ³é¢‘æºç»„ä»¶ï¼ˆæ‹–æ‹½èµ‹å€¼å³å¯ï¼‰
     public AudioSource audioSource;
 
-    public AudioClip bgm1; 
-    public AudioClip bgm2;
+    // äº”ç§åœºæ™¯éŸ³ä¹
+    public AudioClip mainMenuBGM;     // ä¸»ç•Œé¢éŸ³ä¹
+    public AudioClip levelBGM;        // å…³å¡éŸ³ä¹ï¼ˆæ™®é€šå…³å¡ï¼‰
+    public AudioClip bossBGM;         // Bossæˆ˜éŸ³ä¹
+    public AudioClip winGameBGM;      // èƒœåˆ©éŸ³ä¹
+    public AudioClip loseGameBGM;     // å¤±è´¥éŸ³ä¹
 
-    private int currentBgmIndex = 1;
+    private AudioClip currentBGM;     // å½“å‰æ’­æ”¾çš„éŸ³ä¹
 
     private void Awake()
     {
-        // ºËÐÄ£º¿ç³¡¾°²»Ïú»Ù + µ¥Àý·ÀÖØ¸´BGMÖØµþ²¥·Å
+        // æ ¸å¿ƒï¼šè·¨åœºæ™¯ä¸é”€æ¯ + å•ä¾‹é˜²é‡å¤BGMé‡å æ’­æ”¾
         if (Instance == null)
         {
             Instance = this;
@@ -24,104 +28,98 @@ public class BgmControl : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
 
-        // ³õÊ¼»¯ÉèÖÃ£º2D±³¾°ÒôÀÖ¡¢Ñ­»·²¥·Å¡¢»½ÐÑ×Ô¶¯²¥·Å
-        audioSource.spatialBlend = 0; // ´¿2DÒôÐ§£¬È¡Ïû3DÒôÐ§
-        audioSource.loop = true;      // BGMÄ¬ÈÏÑ­»·²¥·Å
-        if (bgm1 != null)
-        {
-            audioSource.clip = bgm1;
-            audioSource.Play();
-        }
+        // åˆå§‹åŒ–è®¾ç½®ï¼š2DèƒŒæ™¯éŸ³ä¹ã€å¾ªçŽ¯æ’­æ”¾ã€å”¤é†’è‡ªåŠ¨æ’­æ”¾
+        audioSource.spatialBlend = 0; 
+        audioSource.loop = true;      // BGMé»˜è®¤å¾ªçŽ¯æ’­æ”¾
+        
+        // é»˜è®¤æ’­æ”¾ä¸»èœå•éŸ³ä¹
+        PlayMainMenuBGM();
     }
 
 
-    public void ToggleBgmSmooth()
+    // æ’­æ”¾ä¸»ç•Œé¢éŸ³ä¹
+    public void PlayMainMenuBGM()
     {
-        if (currentBgmIndex == 1)
-        {
-            if (bgm2 != null) ChangeBGMSmooth(bgm2);
-            currentBgmIndex = 2;
-        }
-        else
-        {
-            if (bgm1 != null) ChangeBGMSmooth(bgm1);
-            currentBgmIndex = 1;
-        }
+        if (mainMenuBGM == null) return;
+        currentBGM = mainMenuBGM;
+           
+        ChangeBGM(mainMenuBGM);
     }
 
-    public void ToggleBgmSmoothToStart()
+    // æ’­æ”¾å…³å¡éŸ³ä¹ï¼ˆæ™®é€šå…³å¡ï¼‰
+    public void PlayLevelBGM()
     {
-        if (currentBgmIndex == 1)
+        if (levelBGM == null) 
         {
-            if (bgm2 != null) ChangeBGMSmooth(bgm2);
-            currentBgmIndex = 2;
-            ToggleBgmControl.Instance.Reset();
+            Debug.LogWarning("BgmControl: levelBGM is null! Cannot play level music.");
+            return;
         }
+        currentBGM = levelBGM;
+        
+        ChangeBGM(levelBGM);
+    }
+
+    // æ’­æ”¾Bossæˆ˜éŸ³ä¹
+    public void PlayBossBGM()
+    {
+        if (bossBGM == null) return;
+        currentBGM = bossBGM;
+        
+        ChangeBGM(bossBGM);
+    }
+
+    // æ’­æ”¾èƒœåˆ©éŸ³ä¹
+    public void PlayWinGameBGM()
+    {
+        if (winGameBGM == null) return;
+        currentBGM = winGameBGM;
+        
+       
+        ChangeBGM(winGameBGM);
+    }
+
+    // æ’­æ”¾å¤±è´¥éŸ³ä¹
+    public void PlayLoseGameBGM()
+    {
+        if (loseGameBGM == null) return;
+        currentBGM = loseGameBGM;
+        
+        ChangeBGM(loseGameBGM);
+    }
+
+    // èŽ·å–å½“å‰æ’­æ”¾çš„éŸ³ä¹
+    public AudioClip GetCurrentBGM()
+    {
+        return currentBGM;
     }
 
 
-    // ÇÐ»»BGM 2ÖÖÐ´·¨
-    // ¡¾Ö±½ÓÇÐ»»BGM¡¿(×î³£ÓÃ£¬Ò»¼üÇÐ»»£¬ÎÞ¹ý¶É)
-    // µ÷ÓÃÊ¾Àý£ºBgmControl.Instance.ChangeBGM(ÄãµÄÐÂBGMÒôÆµÎÄ¼þ);
+    // åˆ‡æ¢BGM 
     public void ChangeBGM(AudioClip newBgmClip)
     {
-        if (newBgmClip == null) return; // ¿ÕÒôÆµ²»Ö´ÐÐ
-        audioSource.clip = newBgmClip;  // Ìæ»»ÐÂµÄBGM
-        audioSource.Play();             // ²¥·ÅÐÂBGM
+        if (newBgmClip == null) return; // ç©ºéŸ³é¢‘ä¸æ‰§è¡Œ
+        audioSource.clip = newBgmClip;  // æ›¿æ¢æ–°çš„BGM
+        audioSource.Play();             // æ’­æ”¾æ–°BGM
     }
 
-    // ¡¾Æ½»¬µ­Èëµ­³öÇÐ»»BGM¡¿(ÍÆ¼ö£¡ÌåÑé×îºÃ£¬ÎÞ¿¨¶ÙÎÞÍ»Ø£)
-    // µ÷ÓÃÊ¾Àý£ºBgmControl.Instance.ChangeBGMSmooth(ÄãµÄÐÂBGMÒôÆµÎÄ¼þ, 1f);
-    public void ChangeBGMSmooth(AudioClip newBgmClip, float fadeTime = 1.5f)
-    {
-        if (newBgmClip == null) return;
-        StartCoroutine(IE_ChangeBGMSmooth(newBgmClip, fadeTime));
-    }
-
-    // Æ½»¬ÇÐ»»µÄÐ­³Ì£¨ÄÚ²¿Ö´ÐÐ£¬²»ÓÃÊÖ¶¯µ÷ÓÃ£©
-    private IEnumerator IE_ChangeBGMSmooth(AudioClip newBgmClip, float fadeTime)
-    {
-        float originVolume = audioSource.volume;
-        // µÚÒ»²½£ºÒôÁ¿µ­³ö£¨ÂýÂý±äÐ¡£©
-        while (audioSource.volume > 0)
-        {
-            audioSource.volume -= originVolume * Time.deltaTime / fadeTime;
-            yield return null;
-        }
-        // µÚ¶þ²½£ºÌæ»»BGM²¢²¥·Å
-        audioSource.clip = newBgmClip;
-        audioSource.Play();
-        // µÚÈý²½£ºÒôÁ¿µ­Èë£¨ÂýÂý±ä´ó£©
-        while (audioSource.volume < originVolume)
-        {
-            audioSource.volume += originVolume * Time.deltaTime / fadeTime;
-            yield return null;
-        }
-    }
-
-    // ²¥·Å/¼ÌÐø²¥·ÅBGM
+    // æ’­æ”¾/ç»§ç»­æ’­æ”¾BGM
     public void PlayBGM()
     {
-        if (!audioSource.isPlaying) audioSource.Play();
+       audioSource.Play();
     }
 
-    // ÔÝÍ£BGM
+    // æš‚åœBGM
     public void PauseBGM()
     {
         audioSource.Pause();
     }
 
-    // Í£Ö¹BGM£¨É÷ÓÃ£¬Í£Ö¹ºóÐèÒªÖØÐÂPlay£¬ÔÝÍ£¸ü³£ÓÃ£©
-    public void StopBGM()
-    {
-        audioSource.Stop();
-    }
-
-    // ÉèÖÃBGMÒôÁ¿
+    // è®¾ç½®BGMéŸ³é‡
     public void SetVolume(float vol)
     {
-        audioSource.volume = Mathf.Clamp01(vol); // ÏÞÖÆÒôÁ¿0~1£¬·ÀÖ¹³ö´í
+        audioSource.volume = Mathf.Clamp01(vol); // é™åˆ¶éŸ³é‡0~1ï¼Œé˜²æ­¢å‡ºé”™
     }
 }

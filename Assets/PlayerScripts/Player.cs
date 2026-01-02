@@ -205,7 +205,12 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         gameObject.SetActive(false);
-        ui.GameOver();
+        // 只有在玩家真正死亡时才调用 GameOver()
+        // 场景重新加载时，isDead 为 false，不会触发 GameOver()
+        if (isDead)
+        {
+            ui.GameOver();
+        }
     }
 
     public void OnHittedAnimationEnd()

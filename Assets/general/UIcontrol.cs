@@ -40,10 +40,6 @@ public class UIcontrol : MonoBehaviour
         // 初始隐藏游戏结束相关UI
         HideGameOverUI();
         
-        // 调试信息：检查按钮是否被分配
-        Debug.Log("UIcontrol Start called");
-        Debug.Log("mainMenuButton is " + (mainMenuButton != null ? "assigned" : "NULL"));
-        
         // 设置按钮导航为None，防止键盘输入触发按钮
         if (restartButton != null)
         {
@@ -52,7 +48,6 @@ public class UIcontrol : MonoBehaviour
             restartButton.navigation = nav;
 
             restartButton.onClick.AddListener(() => {
-                Debug.Log("Restart button clicked");
                 RestartGame();
             });
         }
@@ -80,9 +75,6 @@ public class UIcontrol : MonoBehaviour
                 GoToMainMenu();
             });
             
-            // 调试：检查按钮状态
-            Debug.Log("mainMenuButton gameObject active: " + mainMenuButton.gameObject.activeSelf);
-            Debug.Log("mainMenuButton interactable: " + mainMenuButton.interactable);
         }
         else
         {
@@ -94,10 +86,18 @@ public class UIcontrol : MonoBehaviour
 
     private void RestartGame()
     {
+        // 重新播放关卡音乐
+        if (BgmControl.Instance != null)
+        {
+            BgmControl.Instance.PlayLevelBGM();
+        }
+        
+
         // 重新加载当前场景
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //BgmControl.Instance.ChangeBGMSmooth(BgmControl.Instance.bgm1);
-        HideGameOverUI();
+        Awake();
+        Start();
+        
     }
 
     private void GoToMainMenu()
@@ -108,17 +108,18 @@ public class UIcontrol : MonoBehaviour
         int sceneIndex = SceneUtility.GetBuildIndexByScenePath("MainMenu");
         if (sceneIndex < 0)
         {
-            Debug.LogError("MainMenu scene not found in build settings! Available scenes:");
-            for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
-            {
-                Debug.Log("Scene " + i + ": " + SceneUtility.GetScenePathByBuildIndex(i));
-            }
             return;
         }
         
         // 加载主菜单场景
         SceneManager.LoadScene("MainMenu");
-        HideGameOverUI();
+
+        // 切换到主菜单音乐
+        if (BgmControl.Instance != null)
+        {
+            Debug.Log("Switching to Main Menu BGM");
+            BgmControl.Instance.PlayMainMenuBGM();
+        }
     }
 
     private void ToggleGodMode()
@@ -145,6 +146,12 @@ public class UIcontrol : MonoBehaviour
     // 显示游戏结束UI
     public void GameOver()
     {
+        // 播放失败音乐
+        if (BgmControl.Instance != null)
+        {
+            BgmControl.Instance.PlayLoseGameBGM();
+        }
+
         if (gameOverText != null)
         { 
             gameOverText.gameObject.SetActive(true);
@@ -161,6 +168,12 @@ public class UIcontrol : MonoBehaviour
 
     public void GameVictory()
     {
+        // 播放胜利音乐
+        if (BgmControl.Instance != null)
+        {
+            BgmControl.Instance.PlayWinGameBGM();
+        }
+
         if (gameOverText != null)
         {
             gameOverText.gameObject.SetActive(true);
