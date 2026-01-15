@@ -19535,7 +19535,7 @@ MonoBehaviour:
   isDead: 0
   isGodMode: 0
   moveSpeed: 4
-  jumpForce: 10
+  jumpForce: 11
   jumpMoveMultiplier: 0.8
   fallMoveMultiplier: 0.7
   GroundCheck: {fileID: 467046015}
@@ -19587,7 +19587,7 @@ Rigidbody2D:
   m_Mass: 0.7339349
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1.4
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 5947c3d38a5f5dd428474713557213f0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
