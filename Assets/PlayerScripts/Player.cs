@@ -141,7 +141,11 @@ public class Player : MonoBehaviour
 
     public bool isGroundDetected()
     {
-        isGrounded = Physics2D.Raycast(GroundCheck.position, Vector2.up, groundDis, whatIsGround);//改为了从下往上的射线检测
+        bool isGrounded1,isGrounded2,isGrounded3;
+        isGrounded1 = Physics2D.Raycast(GroundCheck.position, Vector2.up, groundDis, whatIsGround);//改为了从下往上的射线检测
+        isGrounded2 = Physics2D.Raycast(new Vector2(GroundCheck.position.x - 0.5f, GroundCheck.position.y), Vector2.up, groundDis, whatIsGround);
+        isGrounded3 = Physics2D.Raycast(new Vector2(GroundCheck.position.x + 0.5f, GroundCheck.position.y), Vector2.up, groundDis, whatIsGround);
+        isGrounded = isGrounded1 || isGrounded2 || isGrounded3;
         return isGrounded;
     }
 
