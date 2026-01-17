@@ -21,6 +21,10 @@ public class Enemy_Pig_IdleState : EnemyState
     {
         base.Update();
         rb.velocity = new Vector2(0, rb.velocity.y);
+        if (!enemy.isGround)
+        {
+            return;
+        }
         // ¼ì²âÍæ¼Ò
         if (enemy.IsPlayerDetected())
         {

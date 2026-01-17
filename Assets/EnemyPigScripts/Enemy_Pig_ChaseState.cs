@@ -17,7 +17,12 @@ public class Enemy_Pig_ChaseState : EnemyState
     public override void Update()
     {
         base.Update();
-
+        //先检测是否落地，若未落地先以idle状态自由落体
+        if(!enemy.isGround)
+        {
+            stateMachine.ChangeState(enemy.idleState);
+            return;
+        }
         // 检测玩家
         if (!enemy.IsPlayerDetected())
         {

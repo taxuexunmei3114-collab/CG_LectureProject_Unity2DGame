@@ -131,7 +131,11 @@ public class Enemy_Pig : MonoBehaviour
 
     protected virtual void CollisionDetection()
     {
-        isGround = Physics2D.Raycast(GroundCheck.position, Vector2.down, groundDis, whatIsGround);
+        bool isGrounded1, isGrounded2, isGrounded3;
+        isGrounded1 = Physics2D.Raycast(GroundCheck.position, Vector2.down, groundDis, whatIsGround);
+        isGrounded2 = Physics2D.Raycast(new Vector2(GroundCheck.position.x - 0.3f, GroundCheck.position.y), Vector2.down, groundDis, whatIsGround);
+        isGrounded3 = Physics2D.Raycast(new Vector2(GroundCheck.position.x + 0.3f, GroundCheck.position.y), Vector2.down, groundDis, whatIsGround);
+        isGround = isGrounded1 || isGrounded2 || isGrounded3;
         isCliff = Physics2D.Raycast(CliffCheck.position, Vector2.down, cliffDis, whatIsGround);
         isCliff = !isCliff;
         isWall = Physics2D.Raycast(WallCheck.position, Vector2.right * facingdir, wallDis, whatIsGround);

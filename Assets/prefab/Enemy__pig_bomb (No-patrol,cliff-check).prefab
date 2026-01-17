@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 9190845946645076330}
   - component: {fileID: 6738458217132310082}
   m_Layer: 7
-  m_Name: Enemy__pig_bomb (No-patrol,No-cliff-check)
+  m_Name: Enemy__pig_bomb (No-patrol,cliff-check)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,7 +261,7 @@ MonoBehaviour:
   attackTriggerDistance: 5
   CliffCheck: {fileID: 3957071896835418947}
   cliffDis: 0.35
-  isCliffCheckEnable: 0
+  isCliffCheckEnable: 1
   wallDis: 0.63
   WallCheck: {fileID: 8612231088969507659}
   groundDis: 0.63

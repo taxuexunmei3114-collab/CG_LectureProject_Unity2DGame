@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,8 +25,9 @@ public class Enemy_Pig_PatrolState : EnemyState
             stateMachine.ChangeState(enemy.chaseState);
             return;
         }
+        
         // 检查是否有巡逻范围限制
-        if (enemy.hasPatrolRange)
+        if (enemy.hasPatrolRange && ((enemy.patrolPointA.position.x<enemy.transform.position.x && enemy.patrolPointB.position.x < enemy.transform.position.x)|| (enemy.patrolPointA.position.x > enemy.transform.position.x && enemy.patrolPointB.position.x > enemy.transform.position.x)))
         {
             // 只检测X轴方向的距离
             float distanceToTargetX = Mathf.Abs(enemy.transform.position.x - enemy.currentPatrolTarget.position.x);
@@ -48,11 +50,20 @@ public class Enemy_Pig_PatrolState : EnemyState
                 {
                     enemy.Flip();
                 }
+
             }
 
-            // 向目标点移动
-            Vector2 direction = (enemy.currentPatrolTarget.position - enemy.transform.position).normalized;
-            rb.velocity = new Vector2(direction.x * enemy.moveSpeed, rb.velocity.y);
+            if(enemy.isGround)
+            { // 向目标点移动
+                Vector2 direction = (enemy.currentPatrolTarget.position - enemy.transform.position).normalized;
+                rb.velocity = new Vector2(direction.x * enemy.moveSpeed, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
+
+            
         }
         else
         {
@@ -62,8 +73,15 @@ public class Enemy_Pig_PatrolState : EnemyState
                 enemy.Flip();
                 return;
             }
-            // 移动
-            rb.velocity = new Vector2(enemy.moveSpeed * enemy.facingdir, rb.velocity.y);
+            if (enemy.isGround)
+            {
+                // 移动
+                rb.velocity = new Vector2(enemy.moveSpeed * enemy.facingdir, rb.velocity.y);
+            }
+            else
+            {
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            }
         }
 
         // 更新动画参数
